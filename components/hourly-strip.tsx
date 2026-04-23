@@ -61,15 +61,16 @@ export function HourlyStrip({ payload, unit, className }: HourlyStripProps) {
           viewBox="0 0 100 28"
           preserveAspectRatio="none"
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-7 w-full opacity-70"
+          className="pointer-events-none absolute inset-x-0 top-0 h-7 w-full"
         >
           <polyline
             points={sparklinePoints}
             fill="none"
-            stroke="currentColor"
+            stroke="#f59e0b"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
+            strokeOpacity="0.75"
             vectorEffect="non-scaling-stroke"
             transform="scale(1 0.28)"
           />
@@ -87,7 +88,7 @@ export function HourlyStrip({ payload, unit, className }: HourlyStripProps) {
               <li
                 key={iso}
                 className={cn(
-                  "flex min-w-16 shrink-0 flex-col items-center gap-1 rounded-2xl px-2 py-3 text-center",
+                  "flex min-w-16 shrink-0 flex-col items-center gap-1 rounded-2xl px-2 py-3 text-center transition-all duration-200 hover:bg-white/15 hover:ring-1 hover:ring-amber-300/25",
                   isNow && "bg-white/15 ring-1 ring-white/30",
                 )}
               >

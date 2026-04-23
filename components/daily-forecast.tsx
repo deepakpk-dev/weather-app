@@ -42,7 +42,7 @@ export function DailyForecast({ payload, unit, className }: DailyForecastProps) 
           return (
             <li
               key={iso}
-              className="grid grid-cols-[4rem_2.25rem_1fr_auto] items-center gap-3 py-2.5"
+              className="-mx-2 grid grid-cols-[4rem_2.25rem_1fr_auto] items-center gap-3 rounded-2xl px-2 py-2.5 transition-all duration-150 hover:-translate-y-px hover:bg-white/[0.06]"
             >
               <span className="text-sm font-medium text-white/90">
                 {formatDayName(iso, { today: i === 0 })}

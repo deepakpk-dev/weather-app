@@ -43,38 +43,40 @@ export function CurrentConditions({
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/70">
+          <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/45">
             Now
           </p>
-          <p className="mt-1 text-lg font-medium text-white/90">{label}</p>
+          <p className="mt-1 font-[family-name:var(--font-display)] text-xl font-normal italic text-white/85 sm:text-2xl">
+            {label}
+          </p>
         </div>
         <UnitToggle unit={unit} onChange={onUnitChange} />
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-4 sm:gap-8">
+      <div className="mt-2 flex flex-wrap items-center gap-2 sm:gap-6">
         <WeatherIcon
           code={current.weather_code}
           isDay={isDay}
-          size={176}
+          size={160}
           priority
-          className="-my-4 motion-safe:animate-[float_6s_ease-in-out_infinite]"
+          className="-my-2 motion-safe:animate-[float_6s_ease-in-out_infinite]"
         />
         <div className="flex flex-col">
-          <p className="font-mono text-7xl font-light leading-none tabular-nums sm:text-8xl">
+          <p className="font-[family-name:var(--font-display)] text-[6.5rem] font-light leading-none sm:text-[8.5rem]">
             {formatTemp(current.temperature_2m, unit)}
           </p>
-          <p className="mt-2 text-sm text-white/70">
+          <p className="mt-1.5 text-xs text-white/55">
             Feels like{" "}
-            <span className="font-mono tabular-nums text-white/90">
+            <span className="font-mono tabular-nums text-white/80">
               {formatTemp(current.apparent_temperature, unit)}
             </span>
             {" · "}
-            <span className="font-mono tabular-nums text-white/90">{highLow}</span>
+            <span className="font-mono tabular-nums text-white/80">{highLow}</span>
           </p>
         </div>
       </div>
 
-      <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-5 sm:grid-cols-4">
         <Metric
           icon={<Wind className="size-4" />}
           label="Wind"

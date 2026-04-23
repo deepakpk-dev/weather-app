@@ -92,16 +92,18 @@ export function WeatherDashboard({ initialLocation }: DashboardProps) {
     <>
       <GradientBackdrop weatherCode={weatherCode} isDay={isDay} />
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-6 sm:px-6 sm:py-10">
-        <header className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex min-w-0 flex-col">
-            <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/70">
+        <header className="flex flex-wrap items-end justify-between gap-4">
+          <div className="flex min-w-0 flex-col gap-1">
+            <span className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.32em] text-white/45">
+              <MapPin className="size-3 shrink-0" aria-hidden />
               Live weather
             </span>
-            <h1 className="flex items-baseline gap-2 text-2xl font-semibold text-white sm:text-3xl">
-              <MapPin className="size-5 self-center opacity-80" aria-hidden />
-              <span className="truncate">{location.name}</span>
+            <h1 className="flex min-w-0 items-baseline gap-2.5">
+              <span className="truncate font-[family-name:var(--font-display)] text-4xl font-semibold leading-none text-white sm:text-5xl">
+                {location.name}
+              </span>
               {location.admin1 && location.admin1 !== location.name && (
-                <span className="truncate text-base font-normal text-white/70">
+                <span className="hidden shrink-0 font-[family-name:var(--font-display)] text-xl font-normal text-white/50 sm:inline">
                   {location.admin1}
                 </span>
               )}
@@ -141,25 +143,28 @@ export function WeatherDashboard({ initialLocation }: DashboardProps) {
                 payload={data}
                 unit={unit}
                 onUnitChange={handleUnit}
-                className="lg:col-span-2"
+                className="animate-reveal lg:col-span-2 [animation-delay:0ms]"
               />
-              <AirQualityCard aqi={data.airQuality} className="lg:col-span-1" />
+              <AirQualityCard
+                aqi={data.airQuality}
+                className="animate-reveal lg:col-span-1 [animation-delay:80ms]"
+              />
               <HourlyStrip
                 payload={data}
                 unit={unit}
-                className="lg:col-span-3"
+                className="animate-reveal lg:col-span-3 [animation-delay:160ms]"
               />
               <DailyForecast
                 payload={data}
                 unit={unit}
-                className="lg:col-span-2"
+                className="animate-reveal lg:col-span-2 [animation-delay:240ms]"
               />
               <WeatherMap
                 payload={data}
                 location={location}
                 unit={unit}
                 onSelect={handleSelect}
-                className="lg:col-span-1"
+                className="animate-reveal lg:col-span-1 [animation-delay:320ms]"
               />
             </>
           ) : null}
