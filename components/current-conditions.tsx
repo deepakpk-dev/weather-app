@@ -46,7 +46,7 @@ export function CurrentConditions({
           <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/45">
             Now
           </p>
-          <p className="mt-1 font-[family-name:var(--font-display)] text-xl font-normal italic text-white/85 sm:text-2xl">
+          <p className="mt-1 font-[family-name:var(--font-display)] text-xl font-semibold tracking-wide text-white/85 sm:text-2xl">
             {label}
           </p>
         </div>
@@ -62,7 +62,7 @@ export function CurrentConditions({
           className="-my-2 motion-safe:animate-[float_6s_ease-in-out_infinite]"
         />
         <div className="flex flex-col">
-          <p className="font-[family-name:var(--font-display)] text-[6.5rem] font-light leading-none sm:text-[8.5rem]">
+          <p className="font-[family-name:var(--font-display)] text-[7rem] font-black leading-none tracking-tight sm:text-[9rem]">
             {formatTemp(current.temperature_2m, unit)}
           </p>
           <p className="mt-1.5 text-xs text-white/55">
@@ -105,12 +105,6 @@ export function CurrentConditions({
         />
       </dl>
 
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-      `}</style>
     </section>
   );
 }

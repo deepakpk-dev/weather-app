@@ -71,10 +71,10 @@ export function AlertsBanner({ advisories, className }: AlertsBannerProps) {
               onClick={() => setExpanded((v) => !v)}
               aria-expanded={expanded}
               aria-label="Show all advisories"
-              className="rounded-full p-1.5 transition-colors hover:bg-white/10"
+              className="flex size-9 items-center justify-center rounded-full transition-colors hover:bg-white/10"
             >
               <ChevronDown
-                className={cn("size-4 transition-transform", expanded && "rotate-180")}
+                className={cn("size-4 transition-transform duration-200", expanded && "rotate-180")}
               />
             </button>
           )}
@@ -82,7 +82,7 @@ export function AlertsBanner({ advisories, className }: AlertsBannerProps) {
             type="button"
             onClick={() => setDismissed((prev) => [...prev, top.id])}
             aria-label="Dismiss advisory"
-            className="rounded-full p-1.5 transition-colors hover:bg-white/10"
+            className="flex size-9 items-center justify-center rounded-full transition-colors hover:bg-white/10"
           >
             <X className="size-4" />
           </button>
@@ -111,7 +111,7 @@ export function AlertsBanner({ advisories, className }: AlertsBannerProps) {
                   setDismissed((prev) => [...prev, advisory.id])
                 }
                 aria-label={`Dismiss ${advisory.title}`}
-                className="rounded-full p-1 transition-colors hover:bg-white/10"
+                className="flex size-8 items-center justify-center rounded-full transition-colors hover:bg-white/10"
               >
                 <X className="size-3.5" />
               </button>

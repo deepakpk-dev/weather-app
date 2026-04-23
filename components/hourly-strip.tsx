@@ -49,12 +49,9 @@ export function HourlyStrip({ payload, unit, className }: HourlyStripProps) {
       )}
       aria-label="Hourly forecast"
     >
-      <div className="flex items-baseline justify-between gap-4">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
-          Next 24 hours
-        </h2>
-        <p className="text-xs text-white/50">Scroll horizontally</p>
-      </div>
+      <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
+        Next 24 hours
+      </h2>
 
       <div className="relative mt-4">
         <svg

@@ -99,11 +99,11 @@ export function WeatherDashboard({ initialLocation }: DashboardProps) {
               Live weather
             </span>
             <h1 className="flex min-w-0 items-baseline gap-2.5">
-              <span className="truncate font-[family-name:var(--font-display)] text-4xl font-semibold leading-none text-white sm:text-5xl">
+              <span className="truncate font-[family-name:var(--font-display)] text-4xl font-black leading-none tracking-tight text-white sm:text-5xl">
                 {location.name}
               </span>
               {location.admin1 && location.admin1 !== location.name && (
-                <span className="hidden shrink-0 font-[family-name:var(--font-display)] text-xl font-normal text-white/50 sm:inline">
+                <span className="hidden shrink-0 font-[family-name:var(--font-display)] text-xl font-semibold tracking-wide text-white/50 sm:inline">
                   {location.admin1}
                 </span>
               )}

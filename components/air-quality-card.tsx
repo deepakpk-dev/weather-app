@@ -55,7 +55,7 @@ export function AirQualityCard({ aqi, className }: AirQualityCardProps) {
       </div>
 
       <div className="mt-4 flex items-end gap-4">
-        <p className="font-mono text-6xl font-light leading-none tabular-nums">
+        <p className="font-[family-name:var(--font-display)] text-6xl font-black leading-none tracking-tight">
           {Math.round(aqi.us_aqi)}
         </p>
         <span
