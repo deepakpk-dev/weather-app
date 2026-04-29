@@ -67,7 +67,9 @@ export function WeatherDashboard({ initialLocation }: DashboardProps) {
   const swrKey = `/api/forecast?lat=${location.latitude}&lon=${location.longitude}`;
   const { data, error, isLoading } = useSWR<WeatherPayload>(swrKey, fetcher, {
     dedupingInterval: 5 * 60 * 1000,
-    revalidateOnFocus: false,
+    refreshInterval: 5 * 60 * 1000,
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
     keepPreviousData: true,
   });
 
