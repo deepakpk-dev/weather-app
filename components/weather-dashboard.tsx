@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
@@ -44,15 +44,17 @@ export function WeatherDashboard({ initialLocation }: DashboardProps) {
   const router = useRouter();
   const location = initialLocation;
 
-  const [unit, setUnit] = useState<Unit>("metric");
-  useEffect(() => {
+  const [unit, setUnit] = useState<Unit>(() => {
+    if (typeof window === "undefined") return "metric";
     try {
       const stored = window.localStorage.getItem(UNIT_STORAGE_KEY);
-      if (stored === "metric" || stored === "imperial") setUnit(stored);
+      if (stored === "metric" || stored === "imperial") return stored;
     } catch {
       // noop
     }
-  }, []);
+    return "metric";
+  });
+
   const handleUnit = useCallback((next: Unit) => {
     setUnit(next);
     try {

@@ -43,23 +43,29 @@ export function LocationSearch({
   const [error, setError] = useState<string | null>(null);
   const requestIdRef = useRef(0);
 
-  useEffect(() => {
-    if (open) setRecent(getRecentLocations());
-  }, [open]);
+  const handleOpenChange = useCallback((nextOpen: boolean) => {
+    if (nextOpen) setRecent(getRecentLocations());
+    setOpen(nextOpen);
+  }, []);
 
-  useEffect(() => {
-    const trimmed = query.trim();
-    if (trimmed.length < 2) {
+  const handleQueryChange = useCallback((nextQuery: string) => {
+    setQuery(nextQuery);
+    if (nextQuery.trim().length < 2) {
       setResults([]);
       setLoading(false);
       setError(null);
       return;
     }
+    setLoading(true);
+    setError(null);
+  }, []);
+
+  useEffect(() => {
+    const trimmed = query.trim();
+    if (trimmed.length < 2) return;
 
     const id = ++requestIdRef.current;
     const controller = new AbortController();
-    setLoading(true);
-    setError(null);
 
     const timer = window.setTimeout(async () => {
       try {
@@ -113,10 +119,13 @@ export function LocationSearch({
   }, [handleSelect]);
 
   const hasQuery = query.trim().length >= 2;
+  const visibleResults = hasQuery ? results : [];
+  const visibleLoading = hasQuery && loading;
+  const visibleError = hasQuery ? error : null;
   const label = value ? formatLocationLabel(value) : "Choose a location";
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger
         aria-label="Search for a location"
         render={
@@ -142,7 +151,7 @@ export function LocationSearch({
           <CommandInput
             placeholder="Search cities..."
             value={query}
-            onValueChange={setQuery}
+            onValueChange={handleQueryChange}
           />
           <CommandList>
             <CommandGroup heading="Quick">
@@ -165,8 +174,8 @@ export function LocationSearch({
             {hasQuery && (
               <>
                 <CommandSeparator />
-                <CommandGroup heading={loading ? "Searching…" : "Results"}>
-                  {!loading && results.length === 0 && !error && (
+                <CommandGroup heading={visibleLoading ? "Searching…" : "Results"}>
+                  {!visibleLoading && visibleResults.length === 0 && !visibleError && (
                     <div
                       role="status"
                       className="px-2 py-6 text-center text-sm text-muted-foreground"
@@ -174,7 +183,7 @@ export function LocationSearch({
                       No matches found.
                     </div>
                   )}
-                  {results.map((result) => (
+                  {visibleResults.map((result) => (
                     <CommandItem
                       key={result.id}
                       value={`result-${result.id}`}
@@ -215,12 +224,12 @@ export function LocationSearch({
               </>
             )}
 
-            {error && (
+            {visibleError && (
               <div
                 role="alert"
                 className="mx-1 mt-1 rounded-md bg-destructive/10 px-3 py-2 text-xs text-destructive"
               >
-                {error}
+                {visibleError}
               </div>
             )}
           </CommandList>
