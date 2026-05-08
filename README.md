@@ -2,7 +2,7 @@
 
 A polished, production-style weather dashboard built with Next.js, React, TypeScript, Tailwind CSS, Open-Meteo, and Leaflet. The app helps users search any city, view live weather conditions, compare the next 24 hours and 7 days, check air quality, and explore conditions from an interactive map.
 
-Repository: [github.com/deepakprabh/weather-app](https://github.com/deepakprabh/weather-app)
+Repository: [github.com/deepakpk-dev/weather-app](https://github.com/deepakpk-dev/weather-app)
 
 ## Highlights
 
@@ -107,7 +107,7 @@ No API key is required for local development.
 ### Installation
 
 ```bash
-git clone https://github.com/deepakprabh/weather-app.git
+git clone https://github.com/deepakpk-dev/weather-app.git
 cd weather-app
 npm install
 ```
